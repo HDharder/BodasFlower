@@ -1,17 +1,21 @@
-Start-Sleep -Seconds 5  # espera o ngrok iniciar
+Start-Sleep -Seconds 5  # Espera o Ngrok iniciar
 
 try {
     $response = Invoke-RestMethod http://127.0.0.1:4040/api/tunnels
     $url = $response.tunnels[0].public_url
 
-    Write-Host "🔗 Ngrok URL: $url"
+    Write-Host "🔗 Ngrok URL encontrada: $url" -ForegroundColor Green
 
-    # Exemplo: salvar a URL em um arquivo
-    Set-Content -Path "C:\Windows\System32\backscan\ngrok_url.txt" -Value $url
+    # Caminho para salvar o arquivo
+    $outputPath = "C:\Users\User\Documents\GitHub\BodasFlower\ngrok_url.txt"
+    Set-Content -Path $outputPath -Value $url
+    Write-Host "📁 URL salva em: $outputPath"
 
-    # (Opcional) Abrir o navegador com essa URL
-    # Start-Process $url
+    # (Opcional) Abrir a URL no navegador
+    Start-Process $url
 }
 catch {
-    Write-Host "⚠️ Não foi possível capturar a URL do Ngrok"
+    Write-Host "❌ Erro ao obter a URL do Ngrok:" -ForegroundColor Red
+    Write-Host $_.Exception.Message -ForegroundColor Red
+    pause  # Mantém o terminal aberto em caso de erro
 }
