@@ -12,10 +12,9 @@ try {
 
     $html = $html -replace 'fetch\("https:\/\/.*?\/send-location"', "fetch(`"$url/send-location`""
 
-    Set-Content -Path $htmlPath -Value $html
+    Set-Content -Path $htmlPath -Value $html -NoNewline
 
     Write-Host "index.html atualizado com a nova URL!" -ForegroundColor Cyan
-    Start-Process $url
 }
 catch {
     Write-Host "Erro ao atualizar o index.html:" -ForegroundColor Red
