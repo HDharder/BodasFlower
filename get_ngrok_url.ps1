@@ -21,20 +21,14 @@ catch {
     Write-Host $_.Exception.Message -ForegroundColor Red
     pause
 }
-# Caminho do repositório Git (onde está o index.html)
+# Caminho para o executável do GitHub Desktop
+$githubDesktop = "$Env:LOCALAPPDATA\GitHubDesktop\GitHubDesktop.exe"
+
+# Caminho do repositório local
 $repoPath = "C:\Users\User\Documents\GitHub\BodasFlower"
 
-# Mensagem de commit
-$commitMessage = "Atualiza index.html com nova URL do Ngrok automaticamente"
+# Mensagem padrão de commit
+$commitMessage = "Atualiza index.html com nova URL do Ngrok"
 
-# Navega até o repositório
-Set-Location $repoPath
-
-# Adiciona e faz commit
-git add index.html
-git commit -m $commitMessage
-
-# Dá push pra branch main
-git push origin main
-
-Write-Host "✅ Commit e push realizados com sucesso!" -ForegroundColor Green
+# Abre o GitHub Desktop apontando pro repositório
+Start-Process -FilePath $githubDesktop -ArgumentList "--repository $repoPath", "--message `"$commitMessage`"", "--wait"
