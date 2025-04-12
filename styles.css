@@ -4,17 +4,17 @@
       box-sizing: border-box;
     }
 
-html, body {
-  height: 100%;
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
 body {
-  background-color: #f4f7fb;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: 
+    url('https://i.imgur.com/fbRfgeZ.jpeg') left center / 50% 100% no-repeat,
+    url('https://i.imgur.com/07nnLxP.png') right center / 50% 100% no-repeat;
+  background-color: #f4f7fb; /* fallback */
 }
 
 
