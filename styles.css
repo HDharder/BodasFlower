@@ -108,29 +108,3 @@ body {
     .location-info span {
       font-weight: bold;
     }
-/* Fundo dividido com imagens */
-.background-split {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  z-index: -1; /* Fica atrás do conteúdo */
-}
-
-.background-split .left,
-.background-split .right {
-  height: 100%;
-  width: 50%;
-  background-size: cover;
-  background-position: center;
-}
-
-.background-split .left {
-  background-image: url('https://i.imgur.com/fbRfgeZ.jpeg');
-}
-
-.background-split .right {
-  background-image: url('https://i.imgur.com/07nnLxP.png');
-}
